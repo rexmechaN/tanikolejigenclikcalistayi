@@ -65,7 +65,6 @@ button {
 
 .navbar-container {
     width: 100%;
-    height: 120px;
     overflow: hidden;
 }
 
@@ -93,8 +92,62 @@ button {
     color: black;
 }
 
+.responsive-nav-items {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.responsive-nav-item {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding: 20px 15px;
+}
+
+.popup-content {
+    margin: auto;
+    background: #fff;
+    width: 100%;
+    padding: 5px;
+    overflow: visible;
+}
+.popup-arrow {
+    color: #fff;
+}
+
+[role='tooltip'].popup-content {
+    width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+    background: transparent;
+}
+
 .menu-icon {
     display: none;
+}
+
+.konf-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.konf-item {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
 }
 
 .hero {
@@ -116,6 +169,7 @@ button {
 
 .hero-content h2 {
     font-size: 3em;
+    padding: 0 20px;
     -webkit-text-stroke: 2px black;
 }
 
@@ -150,6 +204,12 @@ button {
     fill: black;
     font-size: 1em;
 }
+
+.basvuru {
+    min-height: 85vh;
+    background-color: #CD374C;
+}
+
 
 @media(max-width: 768px) {
     .hero-content h1 {
