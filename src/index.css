@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    font-family: 'Bree Serif', serif;
+    overflow-x: hidden;
+    line-height: 1.5em;
+}
+
+body {
+    font-family: 'Bree Serif', serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
+    overflow: visible;
+    line-height: 1.5em;
+}
+
+button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.navbar-container {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    width: 130px;
+}
+
+.nav-item {
+    display: inline-block;
+    margin-top: -10px;
+    padding: 10px 25px;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    color: black;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    color: white;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 {
+    font-size: 6em;
+    -webkit-text-stroke: 3px black;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    -webkit-text-stroke: 2px black;
+}
+
+.countdown {
+    padding: 20px 25px;
+}
+
+.countdown h3 {
+    font-size: 2.5em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.timer div {
+    display: flex;
+}
+
+.timer svg {
+    margin: 0 10px;
+    width: 150px;
+    height: 150px;
+}
+
+.timer svg text {
+    fill: black;
+    font-size: 1em;
+}
+
+@media(max-width: 768px) {
+    .hero-content h1 {
+        font-size: 5em;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+
+@media(max-width: 570px) {
+    .hero-content h1 {
+        font-size: 4em;
+        -webkit-text-stroke-width: 2px;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+        -webkit-text-stroke-width: 0.04em;
+    }
+
+    .countdown h3 {
+        font-size: 2em;
+    }
+
+    .timer {
+        margin: 20px 0;
+    }
+
+    .timer svg {
+        margin: 0 5px;
+    }
+
+}
+
+@media(max-width: 450px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+        -webkit-text-stroke-width: 0.03em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.75em;
+        -webkit-text-stroke-width: 0.04em;
+    }
+
+    .countdown h3 {
+        font-size: 1.75em;
+    }
+
+    .countdown {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .timer {
+        margin: 0 0;
+    }
+}
+
+@media(max-width: 400px) {
+    .hero-content h1 {
+        font-size: 3em;
+        -webkit-text-stroke-width: 0.03em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5em;
+        -webkit-text-stroke-width: 0.04em;
+    }
+
+    .navbar {
+        padding: 0 20px;
+    }
+}
+
+@media(max-width: 370px) {
+    .timer {
+        flex-wrap: wrap;
+    }
+
+    .countdown h3 {
+        margin-bottom: 20px;
+    }
+
+    .timer svg {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+}
