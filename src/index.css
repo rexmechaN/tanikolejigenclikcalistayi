@@ -63,6 +63,22 @@ button {
     font-family: inherit;
 }
 
+.button {
+    background-color: #cd374c;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: transform 0.2s ease-in-out
+}
+
+.button:hover {
+    background-color: #ab2f3f;
+    transform: scale(1.2);
+    overflow: visible;
+}
+
 .navbar-container {
     width: 100%;
     overflow: hidden;
@@ -84,7 +100,7 @@ button {
 .nav-item {
     display: inline-block;
     margin-top: -10px;
-    padding: 10px 25px;
+    padding: 15px 30px;
     font-size: 20px;
     text-decoration: none;
     border: none;
@@ -205,11 +221,140 @@ button {
     font-size: 1em;
 }
 
-.basvuru {
-    min-height: 85vh;
-    background-color: #CD374C;
+.countdown .button {
+    display: inline-block;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.basvuru {
+    min-height: 86.5vh;
+    background-color: #2A295B;
+}
+
+.basvuru h1 {
+    padding: 0 25px;
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.basvuru-container {
+    position: relative;
+}
+
+.arrow {
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    pointer-events: all;
+    top: 38%;
+    cursor: pointer;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 20px;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 20px;
+}
+
+.basvuru-secenekler {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    padding-bottom: 50px;
+}
+
+.basvuru-secenekler::-webkit-scrollbar {
+    display: none;
+}
+
+.basvuru-secenek {
+    scroll-snap-align: center;
+    display: flex;
+    background-color: #cd374c;
+    border-radius: 10px;
+    margin: 40px;
+    max-width: 1200px;
+    min-width: 60%;
+    border: 3px solid white;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0 -12px 30px, rgba(0, 0, 0, 0.12) 0 4px 6px, rgba(0, 0, 0, 0.17) 0 12px 13px, rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.basvuru-secenek-content {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.basvuru-secenek .img {
+    min-width: 300px;
+}
+
+.basvuru-secenek h2 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.basvuru-secenek p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.basvuru-secenek .button {
+    background-color: #2A295B;
+    font-size: 1em;
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+.basvuru-secenek button:hover {
+    transform: scale(1.1);
+}
+
+.basvuru-secenek-popup {
+    display: none;
+}
+
+@media(max-width: 1200px) {
+    .basvuru-secenek {
+        flex-direction: column;
+        align-items: stretch;
+        min-width: 60%;
+        border: 3px solid white;
+        color: white;
+    }
+
+    .basvuru-secenek .img {
+        min-width: 100%;
+        min-height: 250px;
+    }
+    .left-arrow {
+        position: absolute;
+        left: 5px;
+    }
+
+    .right-arrow {
+        position: absolute;
+        right: 5px;
+    }
+
+
+}
 
 @media(max-width: 768px) {
     .hero-content h1 {
@@ -226,6 +371,34 @@ button {
 
     .menu-icon {
         display: block;
+    }
+
+    .basvuru-secenek-content {
+        height: 100%;
+    }
+
+    .basvuru-secenek h2 {
+        font-size: 1.5em;
+    }
+
+    .basvuru-secenek p {
+        font-size: 1em;
+    }
+
+    .basvuru-secenek-popup {
+        display: block;
+        text-decoration: underline;
+        color: white;
+        font-size: 1em;
+        padding: 0;
+    }
+
+    .basvuru-secenek-popup:hover {
+        transform: none !important;
+    }
+
+    .basvuru-secenek-desc {
+        display: none;
     }
 }
 
@@ -252,6 +425,29 @@ button {
         margin: 0 5px;
     }
 
+    .countdown .button {
+        font-size: 1em;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .basvuru-secenek {
+        margin: 15px;
+        min-width: 75%;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .basvuru-secenek h2 {
+        font-size: 1.2em;
+    }
+
+    .basvuru-secenek p {
+        font-size: 0.8em;
+    }
 }
 
 @media(max-width: 450px) {
@@ -308,5 +504,9 @@ button {
         width: 120px;
         height: 120px;
         margin-bottom: 10px;
+    }
+
+    .button-container {
+        padding-top: 20px;
     }
 }

@@ -1,12 +1,12 @@
-import {useLayoutEffect, useState} from "react";
+import { useLayoutEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
     const [date, setDate] = useState([])
 
-    useLayoutEffect(() => {
+    const setTime = () => {
         const countDownDate = new Date("April 28, 2023 00:00:00").getTime()
-        const root = document.querySelector(":root")
 
         const now = new Date().getTime()
 
@@ -21,22 +21,12 @@ const Home = () => {
             setDate([days, hours, minutes, seconds])
         else
             setDate([0, 0, 0, 0])
+    }
 
+    useLayoutEffect(() => {
+        setTime()
         const interval = setInterval(() => {
-            const now = new Date().getTime()
-
-            const distance = countDownDate - now
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if(!(days < 0 || hours < 0 || minutes < 0 || seconds < 0))
-                setDate([days, hours, minutes, seconds])
-            else
-                setDate([0, 0, 0, 0])
-
+            setTime()
         }, 1000)
 
         return () => {
@@ -83,6 +73,9 @@ const Home = () => {
                             <text x="50%" y="62%" textAnchor="middle" dy=".3em">Saniye</text>
                         </svg>
                     </div>
+                </div>
+                <div className="button-container">
+                    <Link className="button" to="/basvuru">Başvuru Yap</Link>
                 </div>
             </div>
         </section>
