@@ -1,6 +1,13 @@
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai";
+import {useMainContext} from "../contexts/MainContext";
+import Loading from "./Loading";
+import Sent from "./Sent";
+import {useNavigate} from "react-router-dom";
 
 const Basvuru = () => {
+
+    const { authLoading, isApplied } = useMainContext()
+    const navigate = useNavigate()
 
     const secenekler = [
         { name: 'Delege', oName: 'delege', description: "Delegeler konferansın temelini oluştururlar. Amaçları bulundukları komitelerde fikir üreterek çözüm taslağına katkıda bulunmaktır. Bu sayede komitelerinin genel kurulda geçmesine yardımcı olurlar. Çözüm Taslağını oluştururken komite divanının bizzat hazırladığı çalışma rehberlerinden faydalanırlar." },
@@ -23,6 +30,17 @@ const Basvuru = () => {
 
     }
 
+    if(authLoading)
+        return (
+            <Loading />
+        )
+
+    if(isApplied)
+        return (
+            <Sent />
+        )
+
+
     return (
         <section className="basvuru">
             <h1>Başvuru Seçenekleri</h1>
@@ -35,8 +53,8 @@ const Basvuru = () => {
                             <div className="basvuru-secenek-content">
                                 <h2 className="basvuru-secenek-name">{secenek.name}</h2>
                                 <p className="basvuru-secenek-desc">{secenek.description}</p>
-                                <button className="basvuru-secenek-popup">Ne yapar?</button>
-                                <button className="button">Devam et</button>
+                                <button className="basvuru-secenek-popup">Görevi nedir?</button>
+                                <button onClick={() => navigate(`/basvuru/${secenek.oName}`)} className="button">Devam et</button>
                             </div>
                         </div>
                     ))}

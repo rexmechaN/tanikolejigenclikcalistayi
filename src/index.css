@@ -48,6 +48,7 @@ table {
 body {
     font-family: 'Bree Serif', serif;
     overflow-x: hidden;
+    background-color: #2a295b;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
@@ -82,6 +83,7 @@ button {
 .navbar-container {
     width: 100%;
     overflow: hidden;
+    background-color: white;
 }
 
 .navbar {
@@ -170,6 +172,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 65vh;
 }
 
 .hero-content {
@@ -187,6 +190,10 @@ button {
     font-size: 3em;
     padding: 0 20px;
     -webkit-text-stroke: 2px black;
+}
+
+.countdown-container {
+    background-color: white;
 }
 
 .countdown {
@@ -241,7 +248,7 @@ button {
     font-size: 2.5em;
     color: white;
     margin-bottom: 20px;
-    margin-top: 10vh;
+    margin-top: 15vh;
     text-align: center;
 }
 
@@ -272,7 +279,7 @@ button {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     padding-bottom: 50px;
 }
 
@@ -302,16 +309,16 @@ button {
 }
 
 .basvuru-secenek .img {
-    min-width: 300px;
+    min-width: 350px;
 }
 
 .basvuru-secenek h2 {
-    font-size: 2.2em;
+    font-size: 2em;
     margin-bottom: 15px;
 }
 
 .basvuru-secenek p {
-    font-size: 1.1em;
+    font-size: 1em;
     margin-bottom: 15px;
 }
 
@@ -330,7 +337,105 @@ button {
     display: none;
 }
 
+.auth-screen {
+    margin: 15vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 20px 25px;
+}
+
+.auth-screen h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.auth-screen input[type="email"] {
+    background-color: white;
+    border: none;
+    outline: none;
+    color: #2a295b;
+    border-radius: 20px;
+    margin: 20px 0;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+.auth-screen input[type="email"]:focus {
+    transform: scale(1.1);
+}
+
+.auth-screen button {
+    color: white;
+    font-size: 1.1em;
+}
+
+.auth-screen button:hover {
+    transform: scale(1.05);
+}
+
+.auth-screen button:disabled {
+    background-color: gray;
+    cursor: default;
+}
+
+.auth-screen button:disabled:hover {
+    transform: scale(1);
+}
+
+.kvkk-form-container {
+    margin: 10px 15px;
+    overflow: visible !important;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.kvkk-form-container a {
+    color: white;
+    line-height: 1.5em;
+}
+
+.kvkk-form-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.alert {
+    background-color: green;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 350px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: green;
+}
+
+.alert-warning {
+    background-color: #8c8c37;
+}
+
+.alert-danger {
+    background-color: #ab2f3f;
+}
+
+.auth-screen .alert-danger {
+    margin: 20px 0;
+}
+
+.auth-screen .alert-success {
+    margin: 20px 0;
+}
+
 @media(max-width: 1200px) {
+
+    .basvuru h1 {
+        margin-top: 10vh;
+    }
+
     .basvuru-secenek {
         flex-direction: column;
         align-items: stretch;
@@ -343,6 +448,7 @@ button {
         min-width: 100%;
         min-height: 250px;
     }
+
     .left-arrow {
         position: absolute;
         left: 5px;
@@ -371,6 +477,11 @@ button {
 
     .menu-icon {
         display: block;
+    }
+
+    .basvuru-secenek .img {
+        min-width: 100%;
+        min-height: 200px;
     }
 
     .basvuru-secenek-content {
@@ -433,7 +544,7 @@ button {
 
 @media(max-width: 500px) {
     .basvuru-secenek {
-        margin: 15px;
+        margin: 20px 15px;
         min-width: 75%;
     }
 
@@ -508,5 +619,19 @@ button {
 
     .button-container {
         padding-top: 20px;
+    }
+}
+
+@media(max-width: 320px) {
+    .auth-screen h1 {
+        font-size: 1.5em;
+    }
+
+    .auth-screen input[type="email"] {
+        font-size: 1em;
+    }
+
+    .auth-screen .alert {
+        font-size: 0.9em;
     }
 }
