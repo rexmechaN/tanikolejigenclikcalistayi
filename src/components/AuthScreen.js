@@ -54,7 +54,7 @@ const AuthScreen = () => {
         setError(null)
         setLoading(true)
         const actionCodeSettings = {
-            url: `https://tanigc2023.web.app${pathname}`,
+            url: `https://localhost:3000${pathname}`,
             handleCodeInApp: true,
         };
 

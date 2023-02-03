@@ -1,28 +1,44 @@
 import {useLocation} from "react-router-dom";
-import BasvuruForm from "../components/BasvuruForm";
 import AuthScreen from "../components/AuthScreen";
 import NotFound from "./NotFound";
-import {useMainContext} from "../contexts/MainContext";
+import { useMainContext } from "../contexts/MainContext";
+import Sent from "./Sent";
+import Loading from "./Loading";
+import {lazy, Suspense } from "react";
+
+const LazyBasvuruForm = lazy(() => {
+    return Promise.all([
+        import("../components/BasvuruForm"),
+        new Promise(resolve => setTimeout(resolve, 1000))
+    ])
+        .then(([moduleExports]) => moduleExports);
+});
 
 const BasvuruRedirection = () => {
 
-    const { user } = useMainContext();
+    const { user, isApplied, authLoading } = useMainContext();
     const { pathname } = useLocation();
 
-    if(!user)
+    if(authLoading)
+        return <Loading />
+
+    else if(!user)
         return <AuthScreen />
 
+    else if(isApplied)
+        return <Sent />
+
     else if(pathname.includes("/basvuru/delege"))
-        return <BasvuruForm option="Delege" />;
+        return <Suspense fallback={<Loading />}><LazyBasvuruForm option="Delege" /></Suspense>
 
     else if(pathname.includes("/basvuru/gozlemci"))
-        return <BasvuruForm option="Gözlemci" />
+        return <Suspense fallback={<Loading />}><LazyBasvuruForm option="Gözlemci" /></Suspense>
 
     else if(pathname.includes("/basvuru/basin"))
-        return <BasvuruForm option="Basın" />
+        return <Suspense fallback={<Loading />}><LazyBasvuruForm option="Basın" /></Suspense>
 
     else if(pathname.includes("/basvuru/komite-baskan-vekili"))
-        return <BasvuruForm option="Komite Başkan Vekili" />
+        return <Suspense fallback={<Loading />}><LazyBasvuruForm option="Komite Başkan Vekili" /></Suspense>
 
     else
         return <NotFound />

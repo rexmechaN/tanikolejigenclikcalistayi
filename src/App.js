@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Basvuru from "./pages/Basvuru";
@@ -11,6 +11,13 @@ import NotFound from "./pages/NotFound";
 function App() {
 
     const { setUser, setAuthLoading, setIsApplied, setOption, setDurum } = useMainContext()
+
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        document.documentElement.scrollTop = 0
+    }, [pathname]);
+
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {

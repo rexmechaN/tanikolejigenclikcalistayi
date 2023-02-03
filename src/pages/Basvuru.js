@@ -10,21 +10,21 @@ const Basvuru = () => {
     const navigate = useNavigate()
 
     const secenekler = [
+        { name: "Komite Başkan Vekili", oName: "komite-baskan-vekili", description: "Komite divanları akademik tecrübeleri olan ve daha önceden delegelik yapmış, komite başkanı ve yardımcısıdır. Divan üyeleri komite çalışma rehberlerini hazırlar ve kendi komitelerindeki delegelerin çözüm tasklakları oluşturmalarına yardımcı olurlar." },
         { name: 'Delege', oName: 'delege', description: "Delegeler konferansın temelini oluştururlar. Amaçları bulundukları komitelerde fikir üreterek çözüm taslağına katkıda bulunmaktır. Bu sayede komitelerinin genel kurulda geçmesine yardımcı olurlar. Çözüm Taslağını oluştururken komite divanının bizzat hazırladığı çalışma rehberlerinden faydalanırlar." },
-        //{ name: 'Gözlemci', oName: 'gozlemci', description: "Gözlemciler konferansın gizli kahramanlarıdır. Yerine getirdikleri görevlerle komitelerin düzeninin sağlanmasına yardımcı olurlar." },
-        { name: "Basın", oName: "basin", description: "Basın, kişisel kameralarıyla çektikleri konferansa dair fotoğraflarıyla birlikte konferansın kalıcılığına yardımcı olurlar. Basın; komitelerde, aralarda, açılış ve kapanış konuşlarında çektiği fotoğraflarla konferansın işleyişine ışık tutarlar." },
-        {name: "Komite Başkan Vekili", oName: "komite-baskan-vekili", description: "Komite divanları akademik tecrübeleri olan ve daha önceden delegelik yapmış, komite başkanı ve yardımcısıdır. Divan üyeleri komite çalışma rehberlerini hazırlar ve kendi komitelerindeki delegelerin çözüm tasklakları oluşturmalarına yardımcı olurlar."}
+        { name: 'Gözlemci', oName: 'gozlemci', description: "Gözlemciler konferansın gizli kahramanlarıdır. Yerine getirdikleri görevlerle komitelerin düzeninin sağlanmasına yardımcı olurlar." },
+        { name: "Basın", oName: "basin", description: "Basın, kişisel kameralarıyla çektikleri konferansa dair fotoğraflarıyla birlikte konferansın kalıcılığına yardımcı olurlar. Basın; komitelerde, aralarda, açılış ve kapanış konuşlarında çektiği fotoğraflarla konferansın işleyişine ışık tutarlar." }
     ]
 
     const scroll = (direction) => {
         const ele = document.querySelector(".basvuru-secenekler")
+        const secenek = document.querySelector(".basvuru-secenek")
+        const width = secenek.offsetWidth
         if(direction==="left") {
-            console.log("left")
-            ele.scrollLeft += -500;
+            ele.scrollLeft -= width + 100;
         }
         else if(direction==="right") {
-            console.log("right")
-            ele.scrollLeft += 500;
+            ele.scrollLeft += width + 100;
         }
 
 

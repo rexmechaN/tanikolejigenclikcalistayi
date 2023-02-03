@@ -43,6 +43,7 @@ table {
     font-family: 'Bree Serif', serif;
     overflow-x: hidden;
     line-height: 1.5em;
+    box-sizing: border-box;
 }
 
 body {
@@ -371,6 +372,7 @@ button {
 .auth-screen button {
     color: white;
     font-size: 1.1em;
+    padding: 8px 15px;
 }
 
 .auth-screen button:hover {
@@ -408,6 +410,7 @@ button {
     border-radius: 10px;
     max-width: 350px;
     text-align: center;
+    color: white;
 }
 
 .alert-success {
@@ -428,6 +431,140 @@ button {
 
 .auth-screen .alert-success {
     margin: 20px 0;
+}
+
+.basvuru-form h1 {
+    font-size: 2em;
+    margin: 40px 0;
+    color: white;
+    text-align: center;
+    padding: 0 25px;
+}
+
+.basvuru-form .button-container {
+    padding-bottom: 30px;
+    width: 100%;
+    overflow: visible;
+}
+
+.basvuru-form .submit {
+    padding-bottom: 50px;
+}
+
+.basvuru-form .submit-button {
+    padding: 10px 25px;
+}
+
+.basvuru-form .log-out:hover, .basvuru-form .submit-button:hover {
+    transform: scale(1.05);
+}
+
+.questions {
+    padding: 20px 25px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.question {
+    margin-bottom: 30px;
+    overflow: visible !important;
+}
+
+.question label, .question input[type="text"], .question textarea {
+    display: block;
+    line-height: 1.5em;
+    width: 100%;
+}
+
+.question input[type="text"] {
+    border: none;
+    outline: none;
+    color: #2a295b;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 1.1em;
+}
+
+.question textarea {
+    resize: none;
+    height: 250px;
+    border-radius: 20px;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    font-size: 1.1em;
+}
+
+.question label {
+    color: white;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    overflow: visible;
+    transition: all 0.2s ease-in-out;
+}
+
+.komite-secenekler {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+.komite-secenek {
+    display: flex;
+}
+
+.komite-secenek label {
+    margin: 10px 15px;
+    color: black;
+    width: fit-content;
+}
+
+.basvuru-form .alert {
+    margin: 0 auto 25px auto;
+
+}
+
+.sent {
+    color: white;
+    padding: 20px 25px;
+    max-width: 750px;
+    margin: 20vh auto 0 auto;
+    text-align: center;
+}
+
+.sent h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.sent p {
+    font-size: 1.1em;
+}
+
+.sent .buttons {
+    overflow: visible;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sent .buttons button {
+    font-size: 1.05em;
+    margin: 10px 10px;
+}
+
+.sent .buttons button:hover {
+    transform: scale(1.05);
+}
+
+@media(min-width: 2000px) {
+    .basvuru-secenek {
+        min-width: 1000px;
+    }
 }
 
 @media(max-width: 1200px) {
@@ -620,6 +757,26 @@ button {
     .button-container {
         padding-top: 20px;
     }
+
+    .basvuru-form .button-container {
+        padding-top: 0;
+    }
+
+    .sent {
+        padding: 10px 15px;
+    }
+
+    .sent h1 {
+        font-size: 1.5em;
+    }
+
+    .sent p {
+        font-size: 1em;
+    }
+
+    .sent .buttons button {
+        font-size: 0.9em;
+    }
 }
 
 @media(max-width: 320px) {
@@ -633,5 +790,12 @@ button {
 
     .auth-screen .alert {
         font-size: 0.9em;
+    }
+}
+
+@media(max-width: 300px) {
+    .basvuru-secenek {
+        min-width: 80%;
+        margin: 20px 10px;
     }
 }

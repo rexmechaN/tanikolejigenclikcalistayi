@@ -9,13 +9,15 @@ const MainContextProvider = ({ children }) => {
     const [isApplied, setIsApplied] = useState(false);
     const [option, setOption] = useState("");
     const [durum, setDurum] = useState(null);
+    const [canReApply, setCanReApply] = useState(false);
 
     const values = {
         user, setUser,
         authLoading, setAuthLoading,
         isApplied, setIsApplied,
         option, setOption,
-        durum, setDurum
+        durum, setDurum,
+        canReApply, setCanReApply
     }
 
     return (
