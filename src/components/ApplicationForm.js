@@ -1,57 +1,30 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { Navigate, useNavigate} from "react-router-dom";
-import { useState } from "react";
+import {useMemo, useState} from "react";
 import { setApplication } from "../firebase"
 import { serverTimestamp } from "firebase/firestore";
 import {useMainContext} from "../contexts/MainContext";
-const BasvuruForm = ({ option }) => {
 
-    const { user, setDurum, setIsApplied, setOption, setCanReApply, isApplied } = useMainContext()
+const ApplicationForm = ({ option }) => {
+
+    const { user, setDurum, setIsApplied, setOption, setCanReApply, isApplied, komiteler, formSorulari } = useMainContext()
     const navigate = useNavigate()
-    const [komiteList, setKomiteList] = useState("")
+    const [komiteList, setKomiteList] = useState([])
+    const [grade, setGrade] = useState("")
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    let formQuestions;
-
-    if(option === "Delege")
-        formQuestions = "delege"
-    else if(option === "Gözlemci")
-        formQuestions = "gözlemci"
-    else if(option === "Basın")
-        formQuestions = "basin"
-    else if(option === "Komite Başkan Vekili")
-        formQuestions = "komitebaskanvekili"
-
-    const questions = {
-        delege: [
-            {label: "İsim Soyisim", name: "name", type:"text"},
-            {label: "Okul", name: "school", type:"text"},
-            {label: "Sınıf", name: "grade", type:"text"},
-            {label: "Telefon Numarası", name: "phone", type:"text"},
-            {label: "3 adet komite seçiniz", name: "komiteler"},
-            {label: "Tecrübeleriniz", name: "tecrube", type: "textarea"}
-        ],
-        gozlemci: [
-
-        ],
-        basin: [
-
-        ],
-        komitebaskanvekili: [
-
-        ]
-    }
-
-    const komiteler = [
-        "Sağlık",
-        "Eğitim",
-        "İnsan Hakları",
-        "Ekonomi",
-        "Çevre",
-        "Göç"
-    ]
+    const questionType = useMemo(() => {
+        if(option === "Delege")
+            return "delege"
+        else if(option === "Gözlemci")
+            return "gözlemci"
+        else if(option === "Basın")
+            return "basin"
+        else if(option === "Komite Divanı")
+            return "komitedivani"
+    }, [option]);
 
     const logOut = () => {
         signOut(auth).then(() => {
@@ -60,11 +33,15 @@ const BasvuruForm = ({ option }) => {
     }
 
     const handleFocus = (e) => {
-        e.target.previousSibling.style.marginLeft = "25px"
-        e.target.previousSibling.style.transform = "scale(1.1)";
+
+        if(e.target.type !== "textarea"){
+            e.target.previousSibling.style.marginLeft = "25px"
+            e.target.previousSibling.style.transform = "scale(1.1)"
+        }
+
     }
     const handleBlur = (e) => {
-        e.target.previousSibling.style.marginLeft = "15px"
+        e.target.previousSibling.style.marginLeft = "5px"
         e.target.previousSibling.style.transform = "scale(1)";
     }
 
@@ -96,11 +73,16 @@ const BasvuruForm = ({ option }) => {
             if(!komiteler.includes(key))
                 data[key] = value
         }
+        console.log(grade)
+        if(grade === "") {
+            setLoading(false)
+            return setError("Lütfen form bilgilerini doldurun.")
+        }
         if(option === "Delege" && komiteList.length!==3) {
             setLoading(false)
             return setError("3 adet komite seçmelisiniz.")
         }
-        setApplication(user, {...data, durum: null , komiteler: komiteList, date: serverTimestamp(), option: option, isApplied: true})
+        setApplication(user, {...data, durum: null, odeme: false , komiteler: komiteList, date: serverTimestamp(), option: option, isApplied: true})
             .then(() => {
                 setDurum(null)
                 setLoading(false)
@@ -121,14 +103,14 @@ const BasvuruForm = ({ option }) => {
     }
 
     return (
-        <div className="basvuru-form-container">
+        <section className="basvuru-form-container">
             <form onSubmit={handleSubmit} className="basvuru-form">
                 <h1>{option} başvuru formu</h1>
                 <div className="button-container">
                     <button onClick={logOut} className="log-out button">Çıkış Yap</button>
                 </div>
                 <div className="questions">
-                    {questions[formQuestions].map(question => {
+                    {formSorulari[questionType].map(question => {
                         if(question.name === "komiteler")
                             return (
                                 <div className="question" key={question.name}>
@@ -140,6 +122,34 @@ const BasvuruForm = ({ option }) => {
                                                 <label htmlFor={komite}>{komite}</label>
                                             </div>
                                         ))}
+                                    </div>
+                                </div>
+                            )
+                        else if(question.name === "grade")
+                            return (
+                                <div className="question" key={question.name}>
+                                    <label htmlFor={question.name}>{question.label}</label>
+                                    <div onChange={(e) => setGrade(e.target.value)} className="checkboxes">
+                                        <div className="checkbox-container">
+                                            <div className="checkbox">
+                                                <input type="radio" value="9" id="9" name="grade" />
+                                                <label htmlFor="9">9</label>
+                                            </div>
+                                            <div className="checkbox">
+                                                <input type="radio" value="10" id="10" name="grade" />
+                                                <label htmlFor="10">10</label>
+                                            </div>
+                                        </div>
+                                        <div className="checkbox-container">
+                                            <div className="checkbox">
+                                                <input type="radio" value="11" id="11" name="grade" />
+                                                <label htmlFor="11">11</label>
+                                            </div>
+                                            <div className="checkbox">
+                                                <input type="radio" value="12" id="12" name="grade" />
+                                                <label htmlFor="12">12</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             )
@@ -162,8 +172,8 @@ const BasvuruForm = ({ option }) => {
                     <button disabled={loading} className="submit-button button">Gönder</button>
                 </div>
             </form>
-        </div>
+        </section>
     );
 };
 
-export default BasvuruForm;
+export default ApplicationForm;

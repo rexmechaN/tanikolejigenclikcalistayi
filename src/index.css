@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
+:root {
+    color-scheme: only light;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,9 +56,9 @@ body {
     background-color: #2a295b;
 }
 
-h1, h2, h3, h4, h5, h6, p, a {
-    overflow: visible;
+h1, h2, h3, h4, h5, h6, p, a, .navbar div {
     line-height: 1.5em;
+    overflow: visible;
 }
 
 button {
@@ -66,7 +70,7 @@ button {
 }
 
 .button {
-    background-color: #cd374c;
+    background-color: #981a32;
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -97,7 +101,9 @@ button {
 }
 
 .logo {
-    width: 130px;
+    margin: 10px 0;
+    width: 110px;
+    border-radius: 50%;
 }
 
 .nav-item {
@@ -195,6 +201,7 @@ button {
 
 .countdown-container {
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .countdown {
@@ -240,8 +247,9 @@ button {
 }
 
 .basvuru {
-    min-height: 86.5vh;
+    min-height: 78vh;
     background-color: #2A295B;
+    margin-bottom: 30px;
 }
 
 .basvuru h1 {
@@ -254,6 +262,7 @@ button {
 }
 
 .basvuru-container {
+    width: 100vw;
     position: relative;
 }
 
@@ -277,11 +286,12 @@ button {
 }
 
 .basvuru-secenekler {
+    width: 100vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
 }
 
 .basvuru-secenekler::-webkit-scrollbar {
@@ -291,7 +301,7 @@ button {
 .basvuru-secenek {
     scroll-snap-align: center;
     display: flex;
-    background-color: #cd374c;
+    background-color: #981a32;
     border-radius: 10px;
     margin: 40px;
     max-width: 1200px;
@@ -327,7 +337,7 @@ button {
     background-color: #2A295B;
     font-size: 1em;
     align-self: flex-end;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .basvuru-secenek button:hover {
@@ -339,6 +349,7 @@ button {
 }
 
 .auth-screen {
+    min-height: 45vh;
     margin: 15vh 0;
     display: flex;
     flex-direction: column;
@@ -459,8 +470,19 @@ button {
     transform: scale(1.05);
 }
 
+.button:disabled {
+    transform: scale(1);
+    background-color: #575757;
+}
+
+.button:disabled:hover {
+    transform: scale(1);
+    background-color: #575757;
+    cursor: default;
+}
+
 .questions {
-    padding: 20px 25px;
+    padding: 15px 20px;
     max-width: 400px;
     margin: auto;
 }
@@ -497,7 +519,7 @@ button {
 
 .question label {
     color: white;
-    margin-left: 15px;
+    margin-left: 5px;
     margin-bottom: 10px;
     font-size: 1.1em;
     overflow: visible;
@@ -561,6 +583,219 @@ button {
     transform: scale(1.05);
 }
 
+.panel-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #191926;
+}
+
+.panel-nav-item {
+    color: white;
+    margin: 20px;
+    padding: 10px 15px;
+    width: 182px;
+    text-align: center;
+    transition: all 0.5s ease;
+    background-color: #2a295b;
+    border-radius: 10px;
+}
+
+.panel-nav-item:hover {
+    cursor: pointer;
+    background-color: #312f8c;
+}
+
+.panel-active-item, .panel-active-item:hover {
+    background: #981a32;
+}
+
+.panel-content {
+    margin: 0 10px;
+    padding-bottom: 60px;
+}
+
+.user  {
+    margin: 60px auto;
+    display: block;
+    background-color: #ab2f3f;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 20px;
+    color: #e1e1e1;
+    letter-spacing: 0.05em;
+    border: 3px solid white;
+}
+
+.fields {
+
+}
+
+.field {
+    margin-bottom: 30px;
+}
+
+.field-label {
+    font-size: 18px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.field-content {
+    font-size: 16px;
+}
+
+.user-buttons {
+    margin-bottom: 20px;
+}
+
+.user-button {
+    background-color: #2a295b;
+    color: white;
+    padding: 10px 15px;
+    margin-right: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.kabul-ret-buttons {
+    margin-bottom: 20px;
+}
+
+.user-button:hover {
+    background-color: #1c1c41;
+}
+
+.not-selected {
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 15px;
+}
+
+.user-button:disabled {
+    background-color: #575757;
+    cursor: default;
+}
+
+.user-durum {
+    background-color: #2a295b;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.committee-selection {
+    border-radius: 10px;
+    outline: none;
+    padding: 5px;
+}
+
+.filter div {
+    margin-bottom: 20px;
+}
+
+.checkboxes {
+    padding: 0 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+}
+
+.checkbox-container {
+    min-width: 50%;
+    display: flex;
+    margin: 15px 0;
+    justify-content: center;
+}
+
+.checkbox label {
+    color: black;
+}
+
+.checkbox {
+    margin: 0 20px;
+}
+
+.checkbox label {
+    display: inline !important;
+    margin-left: 2px;
+}
+
+.konum {
+    width: 100%;
+    height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.konum h1 {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-size: 42px;
+    margin-bottom: 40px;
+}
+
+#map {
+    width: 90%;
+    border-radius: 15px;
+    border: 7px solid #981a32;
+    aspect-ratio: 16/12;
+    max-width: 600px;
+    min-height: 300px;
+    margin-bottom: 60px;
+}
+
+.footer {
+    height: 125px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #981a32;
+}
+
+.inner-footer {
+    max-width: 500px;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+.inner-footer hr {
+    border: 0;
+    border-top: 2px solid white;
+    margin: 10px 0;
+}
+
+.popup {
+    margin: 0 !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    padding: 15px 20px;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+
+.popup-content {
+    max-width: 900px;
+}
+
 @media(min-width: 2000px) {
     .basvuru-secenek {
         min-width: 1000px;
@@ -589,6 +824,22 @@ button {
     .left-arrow {
         position: absolute;
         left: 5px;
+    }
+
+    .basvuru-secenek-popup {
+        display: block;
+        text-decoration: underline;
+        color: white;
+        font-size: 1em;
+        padding: 0;
+    }
+
+    .basvuru-secenek-desc {
+        display: none;
+    }
+
+    .basvuru-secenek-popup:hover {
+        transform: none !important;
     }
 
     .right-arrow {
@@ -632,22 +883,6 @@ button {
     .basvuru-secenek p {
         font-size: 1em;
     }
-
-    .basvuru-secenek-popup {
-        display: block;
-        text-decoration: underline;
-        color: white;
-        font-size: 1em;
-        padding: 0;
-    }
-
-    .basvuru-secenek-popup:hover {
-        transform: none !important;
-    }
-
-    .basvuru-secenek-desc {
-        display: none;
-    }
 }
 
 @media(max-width: 570px) {
@@ -685,10 +920,6 @@ button {
         min-width: 75%;
     }
 
-    .arrow {
-        display: none;
-    }
-
     .basvuru-secenek h2 {
         font-size: 1.2em;
     }
@@ -716,6 +947,10 @@ button {
     .countdown {
         padding-right: 5px;
         padding-left: 5px;
+    }
+
+    .arrow {
+        display: none;
     }
 
     .timer {
@@ -797,5 +1032,21 @@ button {
     .basvuru-secenek {
         min-width: 80%;
         margin: 20px 10px;
+    }
+
+    .basvuru-form h1 {
+        font-size: 1.6em;
+    }
+
+    .basvuru-form button {
+        font-size: 1em;
+    }
+
+    .question label {
+        font-size: 1em;
+    }
+
+    .question input[type="text"] {
+        font-size: 1em;
     }
 }

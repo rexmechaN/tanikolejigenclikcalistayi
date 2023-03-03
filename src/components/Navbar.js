@@ -1,4 +1,4 @@
-import Logo from "../images/logo.png";
+import Logo from "../images/logo.webp";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useEffect, useState } from "react";
@@ -29,8 +29,9 @@ const Navbar = () => {
                             closeOnDocumentClick
                         >
                             <div className="konf-items">
-                                <Link className="konf-item" to="/ekip">Ekip</Link>
-                                <Link className="konf-item" to="/komiteler">Komiteler</Link>
+                                {/*<Link className="konf-item" to="/ekip">Ekip</Link>*/}
+                                <Link className="konf-item" to="/konum">Konum</Link>
+                                {/*<Link className="konf-item" to="/komiteler">Komiteler</Link>*/}
                             </div>
                         </Popup>
                     </div>
@@ -56,8 +57,9 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="konf-items"
                             >
-                                <Link className="konf-item" to="/ekip">Ekip</Link>
-                                <Link className="konf-item" to="/komiteler">Komiteler</Link>
+                                {/*<Link className="konf-item" to="/ekip">Ekip</Link>*/}
+                                <Link className="konf-item" to="/konum">Konum</Link>
+                                {/*<Link className="konf-item" to="/komiteler">Komiteler</Link>*/}
                             </motion.div>
                         </Popup>
                     </motion.div>

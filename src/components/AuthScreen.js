@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import { sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
 import { auth } from "../firebase";
 
@@ -54,7 +54,7 @@ const AuthScreen = () => {
         setError(null)
         setLoading(true)
         const actionCodeSettings = {
-            url: `https://localhost:3000${pathname}`,
+            url: `https://tanikonf.org${pathname}`,
             handleCodeInApp: true,
         };
 
@@ -111,7 +111,7 @@ const AuthScreen = () => {
                     <button onClick={handleClick} disabled={!isChecked || loading} className="button">Doğrula</button>
                     <div style={{display: show ? "block" : "none"}} className="kvkk-form-container">
                         <input onClick={handleCheckbox} type="checkbox" id="kvkk-checkbox" />
-                        <label htmlFor="kvkk-checkbox"><Link to="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</Link> ve <Link to="/kvkk-acik-riza-metni">KVKK Açık Rıza Metni</Link>'ni okudum, kabul ediyorum.</label>
+                        <label htmlFor="kvkk-checkbox"><a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1O-JgxE4SZAwWmshElRxhe2vcqwkVJ6HJ/view?usp=sharing">KVKK Aydınlatma Metni</a> ve <a rel="noreferrer" target="_blank" href="https://drive.google.com/file/d/12oOZiAB5eUUu2Aj3TpY1OK_lJnJn05v6/view?usp=sharing">KVKK Açık Rıza Metni</a>'ni okudum, kabul ediyorum.</label>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ const AuthScreen = () => {
                 }
                 <div style={{display: show ? "block" : "none"}} className="kvkk-form-container">
                     <input onClick={handleCheckbox} type="checkbox" id="kvkk-checkbox" />
-                    <label htmlFor="kvkk-checkbox"><Link to="/kvkk-aydinlatma-metni">KVKK Aydınlatma Metni</Link> ve <Link to="/kvkk-acik-riza-metni">KVKK Açık Rıza Metni</Link>'ni okudum, kabul ediyorum.</label>
+                    <label htmlFor="kvkk-checkbox"><a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1O-JgxE4SZAwWmshElRxhe2vcqwkVJ6HJ/view?usp=sharing">KVKK Aydınlatma Metni</a> ve <a rel="noreferrer" target="_blank" href="https://drive.google.com/file/d/12oOZiAB5eUUu2Aj3TpY1OK_lJnJn05v6/view?usp=sharing">KVKK Açık Rıza Metni</a>'ni okudum, kabul ediyorum.</label>
                 </div>
             </div>
         </div>

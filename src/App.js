@@ -1,16 +1,20 @@
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import Basvuru from "./pages/Basvuru";
+import Application from "./pages/Application";
 import {useEffect} from "react";
 import { onAuthStateChanged, auth, doesUserExist, registerUser } from "./firebase";
 import {useMainContext} from "./contexts/MainContext";
-import BasvuruRedirection from "./pages/BasvuruRedirection";
+import ApplicationRedirection from "./pages/ApplicationRedirection";
 import NotFound from "./pages/NotFound";
+import Panel from "./pages/Panel/index";
+import Loading from "./components/Loading";
+import Konum from "./pages/Konum";
+import Footer from "./components/Footer";
 
 function App() {
 
-    const { setUser, setAuthLoading, setIsApplied, setOption, setDurum } = useMainContext()
+    const { admin, setUser, setAuthLoading, setIsApplied, setOption, setDurum, setAdmin } = useMainContext()
 
     const { pathname } = useLocation()
 
@@ -18,11 +22,9 @@ function App() {
         document.documentElement.scrollTop = 0
     }, [pathname]);
 
-
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if(user) {
-                console.log(user)
                 if(user.uid === process.env.REACT_APP_ADMIN_ID) {
                     setUser(user)
                     setAuthLoading(false)
@@ -41,6 +43,8 @@ function App() {
                                 setDurum(null)
                                 setIsApplied(false)
                             }
+                            console.log(result.data.admin)
+                            setAdmin(result.data.admin)
                             setAuthLoading(false)
                         }
                         else {
@@ -70,10 +74,14 @@ function App() {
         <Navbar />
         <Routes>
             <Route path="/" element={<Home />}/>
-            <Route path="/basvuru" element={<Basvuru />}/>
-            <Route path="/basvuru/*" element={<BasvuruRedirection />}/>
+            <Route path="/basvuru" element={admin ? <Navigate to={"/panel"}/> : <Application />}/>
+            <Route path="/basvuru/*" element={<ApplicationRedirection />}/>
+            <Route path="/konum" element={<Konum />}/>
+            <Route path="/panel" element={<Panel />} />
+            <Route path="/loading" element={<Loading height={"80vh"} />} />
             <Route path="/*" element={<NotFound />}/>
         </Routes>
+        <Footer />
     </div>
   );
 }
